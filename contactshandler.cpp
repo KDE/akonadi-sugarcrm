@@ -88,12 +88,12 @@ static void setAccountName( const QString &value, KABC::Addressee &addressee )
 
 static QString getAccountId( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-AccountId" );
+    return addressee.custom( "SUGARCRM", "X-AccountId" );
 }
 
 static void setAccountId( const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM", "X-AccountId", value );
+    addressee.insertCustom( "SUGARCRM", "X-AccountId", value );
 }
 
 static QString getAssistantName( const KABC::Addressee &addressee )
@@ -108,217 +108,217 @@ static void setAssitantName( const QString &value, KABC::Addressee &addressee )
 
 static QString getAssistantPhone( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-AssistantsPhone" );
+    return addressee.custom( "SUGARCRM", "X-AssistantsPhone" );
 }
 
 static void setAssistantPhone( const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM", "X-AssistantsPhone", value );
+    addressee.insertCustom( "SUGARCRM", "X-AssistantsPhone", value );
 }
 
 static QString getLeadSourceName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-LeadSourceName" );
+    return addressee.custom( "SUGARCRM", "X-LeadSourceName" );
 }
 
 static void setLeadSourceName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-LeadSourceName", value );
+    addressee.insertCustom( "SUGARCRM", "X-LeadSourceName", value );
 }
 
 static QString getCampaignName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-CampaignName" );
+    return addressee.custom( "SUGARCRM", "X-CampaignName" );
 }
 
 static void setCampaignName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-CampaignName",value );
+    addressee.insertCustom( "SUGARCRM", "X-CampaignName",value );
 }
 
 static QString getCampaignId( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-CampaignId" );
+    return addressee.custom( "SUGARCRM", "X-CampaignId" );
 }
 
 static void setCampaignId(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-CampaignId",value );
+    addressee.insertCustom( "SUGARCRM", "X-CampaignId",value );
 }
 
 static QString getAssignedUserName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-AssignedUserName" );
+    return addressee.custom( "SUGARCRM", "X-AssignedUserName" );
 }
 
 static void setAssignedUserName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-AssignedUserName", value );
+    addressee.insertCustom( "SUGARCRM", "X-AssignedUserName", value );
 }
 
 static QString getAssignedUserId( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-AssignedUserId" );
+    return addressee.custom( "SUGARCRM", "X-AssignedUserId" );
 }
 
 static void setAssignedUserId(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-AssignedUserId", value );
+    addressee.insertCustom( "SUGARCRM", "X-AssignedUserId", value );
 }
 
 static QString getReportsToUserName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-ReportsToUserName" );
+    return addressee.custom( "SUGARCRM", "X-ReportsToUserName" );
 }
 
 static void setReportsToUserName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-ReportsToUserName", value );
+    addressee.insertCustom( "SUGARCRM", "X-ReportsToUserName", value );
 }
 
 static QString getReportsToUserId( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-ReportsToUserId" );
+    return addressee.custom( "SUGARCRM", "X-ReportsToUserId" );
 }
 
 static void setReportsToUserId(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-ReportsToUserId", value );
+    addressee.insertCustom( "SUGARCRM", "X-ReportsToUserId", value );
 }
 
 static QString getModifiedByName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-ModifiedByName" );
+    return addressee.custom( "SUGARCRM", "X-ModifiedByName" );
 }
 
 static void setModifiedByName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-ModifiedByName", value );
+    addressee.insertCustom( "SUGARCRM", "X-ModifiedByName", value );
 }
 
 static QString getDateModified( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-DateModified" );
+    return addressee.custom( "SUGARCRM", "X-DateModified" );
 }
 
 static void setDateModified(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-DateModified", value );
+    addressee.insertCustom( "SUGARCRM", "X-DateModified", value );
 }
 
 static QString getModifiedUserName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-ModifiedUserName" );
+    return addressee.custom( "SUGARCRM", "X-ModifiedUserName" );
 }
 
 static void setModifiedUserName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-ModifiedUserName", value );
+    addressee.insertCustom( "SUGARCRM", "X-ModifiedUserName", value );
 }
 
 static QString getModifiedUserId( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-ModifiedUserId" );
+    return addressee.custom( "SUGARCRM", "X-ModifiedUserId" );
 }
 
 static void setModifiedUserId(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-ModifiedUserId", value );
+    addressee.insertCustom( "SUGARCRM", "X-ModifiedUserId", value );
 }
 
 static QString getDateCreated( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-DateCreated" );
+    return addressee.custom( "SUGARCRM", "X-DateCreated" );
 }
 
 static void setDateCreated(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-DateCreated", value );
+    addressee.insertCustom( "SUGARCRM", "X-DateCreated", value );
 }
 
 static void setContactId(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-ContactId", value );
+    addressee.insertCustom( "SUGARCRM", "X-ContactId", value );
 }
 
 static QString getCreatedByName( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-CreatedByName" );
+    return addressee.custom( "SUGARCRM", "X-CreatedByName" );
 }
 
 static void setCreatedByName(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-CreatedByName", value );
+    addressee.insertCustom( "SUGARCRM", "X-CreatedByName", value );
 }
 
 static QString getCreatedById( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-CreatedById" );
+    return addressee.custom( "SUGARCRM", "X-CreatedById" );
 }
 
 static void setCreatedById(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-CreatedById", value );
+    addressee.insertCustom( "SUGARCRM", "X-CreatedById", value );
 }
 
 static QString getSalutation( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-Salutation" );
+    return addressee.custom( "SUGARCRM", "X-Salutation" );
 }
 
 static void setSalutation(const QString &value, KABC::Addressee &addressee)
 {
-    addressee.insertCustom( "FATCRM", "X-Salutation", value );
+    addressee.insertCustom( "SUGARCRM", "X-Salutation", value );
 }
 
 static QString getOpportunityRoleFields( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-OpportunityRoleFields" );
+    return addressee.custom( "SUGARCRM", "X-OpportunityRoleFields" );
 }
 
 static void setOpportunityRoleFields( const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM","X-OpportunityRoleFields", value );
+    addressee.insertCustom( "SUGARCRM","X-OpportunityRoleFields", value );
 }
 
 static QString getCAcceptStatusFields( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-CacceptStatusFields" );
+    return addressee.custom( "SUGARCRM", "X-CacceptStatusFields" );
 }
 
 static void setCAcceptStatusFields( const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM","X-CacceptStatusFields", value );
+    addressee.insertCustom( "SUGARCRM","X-CacceptStatusFields", value );
 }
 
 static QString getMAcceptStatusFields( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-MacceptStatusFields" );
+    return addressee.custom( "SUGARCRM", "X-MacceptStatusFields" );
 }
 
 static void setMAcceptStatusFields( const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM","X-MacceptStatusFields", value );
+    addressee.insertCustom( "SUGARCRM","X-MacceptStatusFields", value );
 }
 
 static QString getDeleted( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-Deleted" );
+    return addressee.custom( "SUGARCRM", "X-Deleted" );
 }
 
 static void setDeleted (const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM","X-Deleted", value );
+    addressee.insertCustom( "SUGARCRM","X-Deleted", value );
 }
 
 static QString getDoNotCall( const KABC::Addressee &addressee )
 {
-    return addressee.custom( "FATCRM", "X-DoNotCall" );
+    return addressee.custom( "SUGARCRM", "X-DoNotCall" );
 }
 
 static void setDoNotCall ( const QString &value, KABC::Addressee &addressee )
 {
-    addressee.insertCustom( "FATCRM","X-DoNotCall", value );
+    addressee.insertCustom( "SUGARCRM","X-DoNotCall", value );
 }
 
 static QString getNote( const KABC::Addressee &addressee )
