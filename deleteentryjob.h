@@ -24,7 +24,6 @@ namespace Akonadi {
     class Item;
 }
 
-class ModuleHandler;
 class TNS__Set_entry_result;
 
 class DeleteEntryJob : public SugarJob
