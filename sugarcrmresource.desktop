@@ -1,6 +1,16 @@
 [Desktop Entry]
 Name=SugarCRM Contacts
+Name[nl]=Contacten van SugarCRM
+Name[pt]=Contactos do SugarCRM
+Name[sv]=SugarCRM-kontakter
+Name[uk]=Записи контактів з SugarCRM
+Name[x-test]=xxSugarCRM Contactsxx
 Comment=Addressbook from SugarCRM Webservices
+Comment[nl]=Adresboek van SugarCRM webservices
+Comment[pt]=Livro de endereços dos serviços Web do SugarCRM
+Comment[sv]=Adressbok från SugarCRM-webbtjänster
+Comment[uk]=Адресна книга з вебслужб SugarCRM
+Comment[x-test]=xxAddressbook from SugarCRM Webservicesxx
 Type=AkonadiResource
 Exec=akonadi_sugarcrm_resource
 Icon=text-directory
