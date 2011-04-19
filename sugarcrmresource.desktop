@@ -1,11 +1,13 @@
 [Desktop Entry]
 Name=SugarCRM Contacts
+Name[et]=SugarCRM kontaktid
 Name[nl]=Contacten van SugarCRM
 Name[pt]=Contactos do SugarCRM
 Name[sv]=SugarCRM-kontakter
 Name[uk]=Записи контактів з SugarCRM
 Name[x-test]=xxSugarCRM Contactsxx
 Comment=Addressbook from SugarCRM Webservices
+Comment[et]=SugarCRM veebiteenuste aadressiraamat
 Comment[nl]=Adresboek van SugarCRM webservices
 Comment[pt]=Livro de endereços dos serviços Web do SugarCRM
 Comment[sv]=Adressbok från SugarCRM-webbtjänster
