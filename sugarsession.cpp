@@ -79,8 +79,13 @@ SugarSession::RequiredAction SugarSession::setSessionParameters( const QString &
 
 void SugarSession::createSoapInterface()
 {
-    d->mSoap->disconnect();
-    d->mSoap->deleteLater();
+    Sugarsoap *soap = d->mSoap;
+    d->mSoap = 0;
+
+    if ( soap != 0 ) {
+        soap->disconnect();
+        soap->deleteLater();
+    }
 
     d->mSoap = new Sugarsoap;
     d->mSoap->setEndPoint( endPointFromHostString( d->mHost ) );
