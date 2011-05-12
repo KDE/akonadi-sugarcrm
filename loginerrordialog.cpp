@@ -26,6 +26,7 @@
 #include <KPushButton>
 
 #include <QLabel>
+#include <QPointer>
 
 class LoginErrorDialog::Private
 {
@@ -37,7 +38,7 @@ public:
     }
 
 public:
-    KJob *mJob;
+    QPointer<KJob> mJob;
     SugarSession *mSession;
 
 public: // slots
@@ -79,7 +80,9 @@ void LoginErrorDialog::Private::changeConfig()
 
 void LoginErrorDialog::Private::cancel()
 {
-    mJob->deleteLater();
+    if ( mJob != 0 ) {
+        mJob->deleteLater();
+    }
     q->reject();
 }
 
