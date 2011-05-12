@@ -606,6 +606,8 @@ bool SugarCRMResource::handleLoginError( KJob *job )
         return false;
     }
 
+    const bool isExplicitLogin = qobject_cast<LoginJob*>( job ) != 0;
+
     const QString message = job->errorText();
     kWarning() << "error=" << job->error() << ":" << message;
 
@@ -623,7 +625,7 @@ bool SugarCRMResource::handleLoginError( KJob *job )
         error( message );
 
         // if this is any other job than an explicit login, defer to next attempt
-        if ( qobject_cast<LoginJob*>( job ) == 0 ) {
+        if ( !isExplicitLogin ) {
             deferTask();
         } else {
             taskDone();
