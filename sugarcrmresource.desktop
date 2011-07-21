@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=SugarCRM Contacts
+Name[bg]=Контакти от SugarCRM
 Name[de]=SugarCRM-Kontakte
 Name[es]=Contactos de SugarCRM
 Name[et]=SugarCRM kontaktid
@@ -13,6 +14,7 @@ Name[sv]=SugarCRM-kontakter
 Name[uk]=Записи контактів з SugarCRM
 Name[x-test]=xxSugarCRM Contactsxx
 Comment=Addressbook from SugarCRM Webservices
+Comment[bg]=Адресник от уеб-услуга SugarCRM
 Comment[de]=Adressbuch der SugarCRM-Webdienste
 Comment[es]=Libreta de direcciones para los servicios web de SugarCRM
 Comment[et]=SugarCRM veebiteenuste aadressiraamat
