@@ -1,5 +1,6 @@
 /****************************************************************************
 ** Copyright (C) 2010, 2011 Klaralvdalens Datakonsult AB.  All rights reserved.
+** Copyright (C) 2011 Eric Newberry <ericnewberry@mirametrics.com>. All Rights Reserved.
 **
 ** This file is part of the Akonadi Resource for SugarCRM.
 **
@@ -799,7 +800,7 @@ Akonadi::Collection LeadsHandler::collection() const
     Akonadi::Collection contactCollection;
     contactCollection.setRemoteId( moduleName() );
     contactCollection.setContentMimeTypes( QStringList() << KABC::Addressee::mimeType() );
-    contactCollection.setName( i18nc( "@item folder name", "Contacts" ) );
+    contactCollection.setName( i18nc( "@item folder name", "Leads" ) );
     contactCollection.setRights( Akonadi::Collection::CanChangeItem |
                                  Akonadi::Collection::CanCreateItem |
                                  Akonadi::Collection::CanDeleteItem );
@@ -869,7 +870,7 @@ Akonadi::Item LeadsHandler::itemFromEntry( const TNS__Entry_value &entry, const 
 
     const QList<TNS__Name_value> valueList = entry.name_value_list().items();
     if ( valueList.isEmpty() ) {
-        kWarning() << "Contacts entry for id=" << entry.id() << "has no values";
+        kWarning() << "Leads entry for id=" << entry.id() << "has no values";
         return item;
     }
 
