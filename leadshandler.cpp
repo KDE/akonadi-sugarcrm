@@ -15,9 +15,9 @@
 **
 **********************************************************************/
 
-//Put AccessorPair class in a seperate file -- Eric Newberry Dec 22, 2011
+//Added leads handler (mostly copied from ContactsHandler) with modifications outlined below -- Eric Newberry Dec 22, 2011
 
-#include "contactshandler.h"
+#include "leadshandler.h"
 
 #include "sugarsession.h"
 #include "sugarsoap.h"
@@ -35,6 +35,10 @@
 #include <QHash>
 
 #include "accessorpair.h"
+
+typedef QString (*valueGetter)( const KABC::Addressee& );
+typedef void (*valueSetter)( const QString&, KABC::Addressee&);
+typedef void (*addressSetter)( const QString&, KABC::Address& );
 
 static QString getFirstName( const KABC::Addressee &addressee )
 {
@@ -521,8 +525,120 @@ static void setOtherCountry( const QString &value, KABC::Address &address )
     address.setCountry( value );
 }
 
-ContactsHandler::ContactsHandler( SugarSession *session )
-    : ModuleHandler( QLatin1String( "Contacts" ), session ),
+//Start By EEMN
+static QString getReferedBy( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-ReferedBy");
+}
+
+static void setReferedBy( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-ReferedBy", value);
+}
+
+static QString getLeadSourceDesc( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-LeadSourceDesc");
+}
+
+static void setLeadSourceDesc( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-LeadSourceDesc", value);
+}
+
+static QString getStatus( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-Status");
+}
+
+static void setStatus( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-Status", value);
+}
+
+static QString getStatusDesc( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-StatusDesc");
+}
+
+static void setStatusDesc( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-StatusDesc", value);
+}
+
+static QString getAccountDesc( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-AccountDesc");
+}
+
+static void setAccountDesc( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-AccountDesc", value);
+}
+
+static QString getOpportunityId( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-OpportunityId");
+}
+
+static void setOpportunityId( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-OpportunityId", value);
+}
+
+static QString getOpportunityName( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-OpportunityName");
+}
+
+static void setOpportunityName( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-OpportunityName", value);
+}
+
+static QString getOpportunityAmount( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-OpportunityAmount");
+}
+
+static void setOpportunityAmount( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-OpportunityAmount", value);
+}
+
+static QString getPortalName( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-PortalName");
+}
+
+static void setPortalName( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-PortalName", value);
+}
+
+static QString getPortalApp( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-PortalApp");
+}
+
+static void setPortalApp( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-PortalApp", value);
+}
+
+static QString getWebsite( const KABC::Addressee &addressee )
+{
+    return addressee.custom("SUGARCRM", "X-Website");
+}
+
+static void setWebsite( const QString &value, KABC::Addressee &addressee )
+{
+    addressee.insertCustom("SUGARCRM", "X-Website", value);
+}
+//End By EEMN
+
+LeadsHandler::LeadsHandler( SugarSession *session )
+    : ModuleHandler( QLatin1String( "Leads" ), session ),
       mAccessors( new AccessorHash )
 {
     mAccessors->insert( QLatin1String( "first_name" ),
@@ -641,20 +757,44 @@ ContactsHandler::ContactsHandler( SugarSession *session )
                         new AccessorPair( getDeleted, setDeleted, QString() ) );
     mAccessors->insert( QLatin1String( "do_not_call" ),
                         new AccessorPair( getDoNotCall, setDoNotCall, QString() ) );
+    //Start by EEMN
+    mAccessors->insert( QLatin1String( "refered_by" ),
+			new AccessorPair( getReferedBy, setReferedBy, QString() ) );
+    mAccessors->insert( QLatin1String( "lead_source_description" ),
+			new AccessorPair( getLeadSourceDesc, setLeadSourceDesc, QString() ) );
+    mAccessors->insert( QLatin1String( "status" ),
+			new AccessorPair( getStatus, setStatus, QString() ) );
+    mAccessors->insert( QLatin1String( "status_description" ),
+			new AccessorPair( getStatusDesc, setStatusDesc, QString() ) );
+    mAccessors->insert( QLatin1String( "account_description" ),
+			new AccessorPair( getAccountDesc, setAccountDesc, QString() ) );
+    mAccessors->insert( QLatin1String( "opportunity_id" ),
+			new AccessorPair( getOpportunityId, setOpportunityId, QString() ) );
+    mAccessors->insert( QLatin1String( "opportunity_name" ),
+			new AccessorPair( getOpportunityName, setOpportunityName, QString() ) );
+    mAccessors->insert( QLatin1String( "opportunity_amount" ),
+			new AccessorPair( getOpportunityAmount, setOpportunityAmount, QString() ) );
+    mAccessors->insert( QLatin1String( "portal_name" ),
+			new AccessorPair( getPortalName, setPortalName, QString() ) );
+    mAccessors->insert( QLatin1String( "portal_app" ),
+			new AccessorPair( getPortalApp, setPortalApp, QString() ) );
+    mAccessors->insert( QLatin1String( "website" ),
+			new AccessorPair( getWebsite, setWebsite, QString() ) );
+    //End by EEMN
 }
 
-ContactsHandler::~ContactsHandler()
+LeadsHandler::~LeadsHandler()
 {
     qDeleteAll( *mAccessors );
     delete mAccessors;
 }
 
-QStringList ContactsHandler::supportedFields() const
+QStringList LeadsHandler::supportedFields() const
 {
     return mAccessors->keys();
 }
 
-Akonadi::Collection ContactsHandler::collection() const
+Akonadi::Collection LeadsHandler::collection() const
 {
     Akonadi::Collection contactCollection;
     contactCollection.setRemoteId( moduleName() );
@@ -667,10 +807,10 @@ Akonadi::Collection ContactsHandler::collection() const
     return contactCollection;
 }
 
-void ContactsHandler::listEntries( const ListEntriesScope &scope )
+void LeadsHandler::listEntries( const ListEntriesScope &scope )
 {
-    const QString query = scope.query( QLatin1String( "contacts" ) );
-    const QString orderBy = QLatin1String( "contacts.last_name" );
+    const QString query = scope.query( QLatin1String( "leads" ) );
+    const QString orderBy = QLatin1String( "leads.last_name" );
     const int offset = scope.offset();
     const int maxResults = 100;
     const int fetchDeleted = scope.deleted();
@@ -681,7 +821,7 @@ void ContactsHandler::listEntries( const ListEntriesScope &scope )
     soap()->asyncGet_entry_list( sessionId(), moduleName(), query, orderBy, offset, selectedFields, maxResults, fetchDeleted );
 }
 
-bool ContactsHandler::setEntry( const Akonadi::Item &item )
+bool LeadsHandler::setEntry( const Akonadi::Item &item )
 {
     if ( !item.hasPayload<KABC::Addressee>() ) {
         kError() << "item (id=" << item.id() << ", remoteId=" << item.remoteId()
@@ -723,7 +863,7 @@ bool ContactsHandler::setEntry( const Akonadi::Item &item )
     return true;
 }
 
-Akonadi::Item ContactsHandler::itemFromEntry( const TNS__Entry_value &entry, const Akonadi::Collection &parentCollection )
+Akonadi::Item LeadsHandler::itemFromEntry( const TNS__Entry_value &entry, const Akonadi::Collection &parentCollection )
 {
     Akonadi::Item item;
 
@@ -766,7 +906,7 @@ Akonadi::Item ContactsHandler::itemFromEntry( const TNS__Entry_value &entry, con
     return item;
 }
 
-bool ContactsHandler::needBackendChange( const Akonadi::Item &item, const QSet<QByteArray> &modifiedParts ) const
+bool LeadsHandler::needBackendChange( const Akonadi::Item &item, const QSet<QByteArray> &modifiedParts ) const
 {
     if ( ModuleHandler::needBackendChange( item, modifiedParts ) ) {
         return true;
@@ -776,7 +916,7 @@ bool ContactsHandler::needBackendChange( const Akonadi::Item &item, const QSet<Q
            modifiedParts.contains( partIdFromPayloadPart( Akonadi::ContactPart::Standard ) );
 }
 
-void ContactsHandler::compare( Akonadi::AbstractDifferencesReporter *reporter,
+void LeadsHandler::compare( Akonadi::AbstractDifferencesReporter *reporter,
                                const Akonadi::Item &leftItem, const Akonadi::Item &rightItem )
 {
     Q_ASSERT( leftItem.hasPayload<KABC::Addressee>() );

@@ -15,10 +15,13 @@
 **
 **********************************************************************/
 
+//Added leads handler and put AccessorPair class in a seperate file -- Eric Newberry Dec 22, 2011
+
 #include "sugarcrmresource.h"
 
 #include "conflicthandler.h"
 #include "contactshandler.h"
+#include "leadshandler.h"
 #include "createentryjob.h"
 #include "deleteentryjob.h"
 #include "fetchentryjob.h"
@@ -404,7 +407,14 @@ void SugarCRMResource::listModulesResult( KJob *job )
             ModuleHandler* handler = 0;
             if ( module == QLatin1String( "Contacts" ) ) {
                 handler = new ContactsHandler( mSession );
-            } else {
+            }
+            
+            else if(module == QLatin1String("Leads"))
+	    {
+		handler = new LeadsHandler(mSession);
+	    }
+            
+            else {
                 //kDebug() << "No module handler for" << module;
                 continue;
             }

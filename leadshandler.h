@@ -15,22 +15,21 @@
 **
 **********************************************************************/
 
-//Put AccessorPair class in a seperate file -- Eric Newberry Dec 22, 2011
+//Added leads handler (mostly copied from ContactsHandler) with modifications outlined below -- Eric Newberry Dec 22, 2011
 
-#ifndef CONTACTSHANDLER_H
-#define CONTACTSHANDLER_H
+#pragma once
 
 #include "modulehandler.h"
 #include "accessorpair.h"
 
 template <typename U, typename V> class QHash;
 
-class ContactsHandler : public ModuleHandler
+class LeadsHandler : public ModuleHandler
 {
 public:
-    ContactsHandler( SugarSession *session );
+    LeadsHandler( SugarSession *session );
 
-    ~ContactsHandler();
+    ~LeadsHandler();
 
     QStringList supportedFields() const;
 
@@ -60,5 +59,3 @@ private:
     typedef QHash<QString, AccessorPair*> AccessorHash;
     AccessorHash *mAccessors;
 };
-
-#endif

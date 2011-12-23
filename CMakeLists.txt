@@ -76,11 +76,13 @@ set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
 ########### next target ###############
 
 set( sugarcrmresource_SRCS
+    accessorpair.cpp
     contactshandler.cpp
     createentryjob.cpp
     datetimeutils.cpp
     deleteentryjob.cpp
     fetchentryjob.cpp
+    leadshandler.cpp
     listentriesjob.cpp
     listmodulesjob.cpp
     loginerrordialog.cpp
