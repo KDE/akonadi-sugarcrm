@@ -22,6 +22,7 @@
 #include "conflicthandler.h"
 #include "contactshandler.h"
 #include "leadshandler.h"
+#include "taskshandler.h"
 #include "createentryjob.h"
 #include "deleteentryjob.h"
 #include "fetchentryjob.h"
@@ -407,14 +408,11 @@ void SugarCRMResource::listModulesResult( KJob *job )
             ModuleHandler* handler = 0;
             if ( module == QLatin1String( "Contacts" ) ) {
                 handler = new ContactsHandler( mSession );
-            }
-            
-            else if(module == QLatin1String("Leads"))
-	    {
-		handler = new LeadsHandler(mSession);
-	    }
-            
-            else {
+            } else if(module == QLatin1String("Leads")) {
+                handler = new LeadsHandler(mSession);
+            } else if(module == QLatin1String("Tasks")) {
+                handler = new TasksHandler(mSession);
+	    } else {
                 //kDebug() << "No module handler for" << module;
                 continue;
             }

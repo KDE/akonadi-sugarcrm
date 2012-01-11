@@ -94,6 +94,8 @@ set( sugarcrmresource_SRCS
     sugarcrmresource.cpp
     sugarjob.cpp
     sugarsession.cpp
+    taskaccessorpair.cpp
+    taskshandler.cpp
     updateentryjob.cpp
 
     # work with local implementations until available from kdepimlibs
@@ -122,6 +124,7 @@ target_link_libraries(akonadi_sugarcrm_resource
     ${KDE4_AKONADI_KABC_LIBS}
     ${KDE4_AKONADI_LIBS}
     ${KDEPIMLIBS_KABC_LIBS}
+    ${KDEPIMLIBS_KCALCORE_LIBS}
     ${KDE4_KDECORE_LIBS}
     ${QT_QTDBUS_LIBRARY}
     ${QT_QTCORE_LIBRARY})
