@@ -19,7 +19,6 @@
 #include "taskaccessorpair.h"
 
 TaskAccessorPair::TaskAccessorPair( taskValueGetter get, taskValueSetter set, const QString &name )
-    : getter( get ), diffName( name )
+    : getter( get ), setter( set ), diffName( name )
 {
-    setter.vSetter = set;
 }

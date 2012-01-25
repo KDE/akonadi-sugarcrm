@@ -403,7 +403,7 @@ Akonadi::Item TasksHandler::itemFromEntry( const TNS__Entry_value &entry, const 
             continue;
         }
 
-        (*accessIt)->setter.vSetter( namedValue.value(), *todo );
+        (*accessIt)->setter( namedValue.value(), *todo );
     }    
     
     item.setPayload<KCalCore::Todo::Ptr>( todo );

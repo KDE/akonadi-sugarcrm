@@ -32,8 +32,6 @@ public:
 
 public:
     taskValueGetter getter;
-    union tsetter {
-        taskValueSetter vSetter;
-    } setter;
+    taskValueSetter setter;
     const QString diffName;
 };
