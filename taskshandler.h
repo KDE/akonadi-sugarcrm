@@ -44,15 +44,8 @@ public:
                   const Akonadi::Item &leftItem, const Akonadi::Item &rightItem );
 
 private:
-    /*inline bool isAddressValue( const QString& value ) const
-    { return ( isAltAddressValue( value ) || isPrimaryAddressValue( value ) );}
-    inline bool isAltAddressValue( const QString& value ) const
-    { return value.startsWith( QString( "alt_address_" ) );}
-    inline bool isPrimaryAddressValue( const QString& value ) const
-    { return value.startsWith( QString( "primary_address_" ) );}*/
-
     QString adjustedTime( const QString datetime ) const;
 
     typedef QHash<QString, TaskAccessorPair*> AccessorHash;
     AccessorHash *mAccessors;
-};};
+};

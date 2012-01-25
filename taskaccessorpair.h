@@ -24,20 +24,16 @@
 
 typedef QString (*taskValueGetter)( const KCalCore::Todo& );
 typedef void (*taskValueSetter)( const QString&, KCalCore::Todo&);
-//typedef void (*taskDateTimeSetter)( const KDateTime&, KCalCore::Todo&);
 
 class TaskAccessorPair
 {
 public:
     TaskAccessorPair( taskValueGetter get, taskValueSetter set, const QString &name );
 
-    //TaskAccessorPair( taskValueGetter get, taskDateTimeSetter set, const QString &name );
-    
 public:
     taskValueGetter getter;
     union tsetter {
         taskValueSetter vSetter;
-        //taskDateTimeSetter dSetter;
     } setter;
     const QString diffName;
 };

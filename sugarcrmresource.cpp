@@ -21,11 +21,10 @@
 
 #include "conflicthandler.h"
 #include "contactshandler.h"
-#include "leadshandler.h"
-#include "taskshandler.h"
 #include "createentryjob.h"
 #include "deleteentryjob.h"
 #include "fetchentryjob.h"
+#include "leadshandler.h"
 #include "listentriesjob.h"
 #include "listmodulesjob.h"
 #include "loginerrordialog.h"
@@ -36,14 +35,13 @@
 #include "settingsadaptor.h"
 #include "sugarconfigdialog.h"
 #include "sugarsession.h"
+#include "taskshandler.h"
 #include "updateentryjob.h"
 
 #include <akonadi/changerecorder.h>
 #include <akonadi/collection.h>
 #include <akonadi/itemfetchscope.h>
 #include <akonadi/itemmodifyjob.h>
-
-#include <kabc/addressee.h>
 
 #include <KLocale>
 #include <KWindowSystem>
@@ -408,10 +406,10 @@ void SugarCRMResource::listModulesResult( KJob *job )
             ModuleHandler* handler = 0;
             if ( module == QLatin1String( "Contacts" ) ) {
                 handler = new ContactsHandler( mSession );
-            } else if(module == QLatin1String("Leads")) {
-                handler = new LeadsHandler(mSession);
-            } else if(module == QLatin1String("Tasks")) {
-                handler = new TasksHandler(mSession);
+            } else if ( module == QLatin1String( "Leads" ) ) {
+                handler = new LeadsHandler( mSession );
+            } else if ( module == QLatin1String( "Tasks" ) ) {
+                handler = new TasksHandler( mSession );
 	    } else {
                 //kDebug() << "No module handler for" << module;
                 continue;

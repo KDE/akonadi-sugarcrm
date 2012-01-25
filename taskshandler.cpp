@@ -127,35 +127,35 @@ static void setAssignedUserId( const QString &value, KCalCore::Todo &todo )
 
 static QString getStatus( const KCalCore::Todo &todo )
 {
-    if(todo.status() == KCalCore::Todo::StatusConfirmed) {
-        return "Not Started";
-    } else if(todo.status() == KCalCore::Todo::StatusInProcess) {
-        return "In Progress";
-    } else if(todo.status() == KCalCore::Todo::StatusCompleted) {
-        return "Completed";
-    } else if(todo.status() == KCalCore::Todo::StatusNeedsAction) {
-        return "Pending Input";
-    } else if(todo.customStatus() == "StatusDeferred") {
-        return "Deferred";
+    if ( todo.status() == KCalCore::Todo::StatusConfirmed ) {
+        return QLatin1String( "Not Started" );
+    } else if ( todo.status() == KCalCore::Todo::StatusInProcess ) {
+        return QLatin1String( "In Progress" );
+    } else if ( todo.status() == KCalCore::Todo::StatusCompleted ) {
+        return QLatin1String( "Completed" );
+    } else if ( todo.status() == KCalCore::Todo::StatusNeedsAction ) {
+        return QLatin1String( "Pending Input" );
+    } else if ( todo.customStatus() == "StatusDeferred" ) {
+        return QLatin1String( "Deferred" );
     } else {
-        return "None";
+        return QLatin1String( "None" );
     }
 }
 
 static void setStatus( const QString &value, KCalCore::Todo &todo )
 {
-    if(value == "Not Started") {
-        todo.setStatus(KCalCore::Todo::StatusConfirmed);
-    } else if(value == "In Progress") {
-        todo.setStatus(KCalCore::Todo::StatusInProcess);
-    } else if(value == "Completed") {
-        todo.setStatus(KCalCore::Todo::StatusCompleted);
-    } else if(value == "Pending Input") {
-        todo.setStatus(KCalCore::Todo::StatusNeedsAction);
-    } else if(value == "Deferred") {
-        todo.setCustomStatus("StatusDeferred");
+    if ( value == QLatin1String( "Not Started" ) ) {
+        todo.setStatus( KCalCore::Todo::StatusConfirmed );
+    } else if ( value == QLatin1String( "In Progress" ) ) {
+        todo.setStatus( KCalCore::Todo::StatusInProcess );
+    } else if ( value == QLatin1String( "Completed" ) ) {
+        todo.setStatus( KCalCore::Todo::StatusCompleted );
+    } else if ( value == QLatin1String( "Pending Input" ) ) {
+        todo.setStatus( KCalCore::Todo::StatusNeedsAction );
+    } else if ( value == QLatin1String( "Deferred" ) ) {
+        todo.setCustomStatus( QLatin1String( "StatusDeferred" ) );
     } else {
-        todo.setStatus(KCalCore::Todo::StatusNone);
+        todo.setStatus( KCalCore::Todo::StatusNone );
     }
 }
 
@@ -172,12 +172,12 @@ static void setDateDueFlag( const QString &value, KCalCore::Todo &todo )
 static QString getDateDue( const KCalCore::Todo &todo )
 {
     KDateTime dateDue = todo.dtDue();
-    return dateDue.toString("%Y-%m-%d %H:%M:%S");
+    return dateDue.toString( "%Y-%m-%d %H:%M:%S" );
 }
 
 static void setDateDue( const QString &value, KCalCore::Todo &todo )
 {
-    todo.setDtDue( KDateTime::fromString(value, "%Y-%m-%d %H:%M:%S", new KTimeZones, true) );
+    todo.setDtDue( KDateTime::fromString( value, "%Y-%m-%d %H:%M:%S", 0, true ) );
 }
 
 static QString getDateStartFlag( const KCalCore::Todo &todo )
@@ -193,12 +193,12 @@ static void setDateStartFlag( const QString &value, KCalCore::Todo &todo )
 static QString getDateStart( const KCalCore::Todo &todo )
 {
     KDateTime dateStart = todo.dtStart();
-    return dateStart.toString("%Y-%m-%d %H:%M:%S");
+    return dateStart.toString( "%Y-%m-%d %H:%M:%S" );
 }
 
 static void setDateStart( const QString &value, KCalCore::Todo &todo )
 {
-    todo.setDtStart( KDateTime::fromString(value, "%Y-%m-%d %H:%M:%S", new KTimeZones, true) );
+    todo.setDtStart( KDateTime::fromString( value, "%Y-%m-%d %H:%M:%S", 0, true ) );
 }
 
 static QString getParentType( const KCalCore::Todo &todo )
@@ -233,27 +233,27 @@ static void setContactId( const QString &value, KCalCore::Todo &todo )
 
 static QString getPriority( const KCalCore::Todo &todo )
 {
-    if(todo.priority() == 1) {
-	return "High";
-    } else if(todo.priority() == 5) {
-	return "Medium";
-    } else if(todo.priority() == 9) {
-	return "Low";
+    if ( todo.priority() == 1 ) {
+	return QLatin1String( "High" );
+    } else if ( todo.priority() == 5 ) {
+	return QLatin1String( "Medium" );
+    } else if ( todo.priority() == 9 ) {
+	return QLatin1String( "Low" );
     } else {
-	return "None";
+	return QLatin1String( "None" );
     }
 }
 
 static void setPriority( const QString &value, KCalCore::Todo &todo )
 {
-    if(value == "High") {
-	todo.setPriority(1);
-    } else if(value == "Medium") {
-	todo.setPriority(5);
-    } else if(value == "Low") {
-	todo.setPriority(9);
+    if ( value == QLatin1String( "High" ) ) {
+	todo.setPriority( 1 );
+    } else if ( value == QLatin1String( "Medium" ) ) {
+	todo.setPriority( 5 );
+    } else if ( value == QLatin1String( "Low" ) ) {
+	todo.setPriority( 9 );
     } else {
-	todo.setPriority(0);
+	todo.setPriority( 0 );
     }
 }
 
@@ -317,8 +317,8 @@ Akonadi::Collection TasksHandler::collection() const
     taskCollection.setContentMimeTypes( QStringList() << KCalCore::Todo::todoMimeType() );
     taskCollection.setName( i18nc( "@item folder name", "Tasks" ) );
     taskCollection.setRights( Akonadi::Collection::CanChangeItem |
-                                 Akonadi::Collection::CanCreateItem |
-                                 Akonadi::Collection::CanDeleteItem );
+                              Akonadi::Collection::CanCreateItem |
+                              Akonadi::Collection::CanDeleteItem );
 
     return taskCollection;
 }

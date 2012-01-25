@@ -23,9 +23,3 @@ TaskAccessorPair::TaskAccessorPair( taskValueGetter get, taskValueSetter set, co
 {
     setter.vSetter = set;
 }
-
-/*TaskAccessorPair::TaskAccessorPair( taskValueGetter get, taskDateTimeSetter set, const QString &name )
-    : getter( get ), diffName( name )
-{
-    setter.dSetter = set;
-}*/
