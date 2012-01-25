@@ -265,31 +265,31 @@ TasksHandler::TasksHandler( SugarSession *session )
     mAccessors->insert( QLatin1String( "id" ),
                         new TaskAccessorPair( getId, setId, QString() ) );
     mAccessors->insert( QLatin1String( "name" ),
-                        new TaskAccessorPair( getSummary, setSummary, QString() ) );
+                        new TaskAccessorPair( getSummary, setSummary, i18nc( "@item:intable TODO title", "Title" ) ) );
     mAccessors->insert( QLatin1String( "date_entered" ),
-                        new TaskAccessorPair( getDateEntered, setDateEntered, QString() ) );
+                        new TaskAccessorPair( getDateEntered, setDateEntered, i18nc( "@item:intable", "Creation Date" ) ) );
     mAccessors->insert( QLatin1String( "date_modififed" ),
-                        new TaskAccessorPair( getDateModified, setDateModified, QString() ) );
+                        new TaskAccessorPair( getDateModified, setDateModified, i18nc( "@item:intable", "Modification Date" ) ) );
     mAccessors->insert( QLatin1String( "modified_user_id" ),
                         new TaskAccessorPair( getModifiedUserId, setModifiedUserId, QString() ) );
     mAccessors->insert( QLatin1String( "created_by" ),
                         new TaskAccessorPair( getCreatedBy, setCreatedBy, QString() ) );
     mAccessors->insert( QLatin1String( "description" ),
-                        new TaskAccessorPair( getDescription, setDescription, QString() ) );
+                        new TaskAccessorPair( getDescription, setDescription, i18nc( "@item:intable", "Description" ) ) );
     mAccessors->insert( QLatin1String( "deleted" ),
                         new TaskAccessorPair( getDeleted, setDeleted, QString() ) );
     mAccessors->insert( QLatin1String( "assigned_user_id" ),
                         new TaskAccessorPair( getAssignedUserId, setAssignedUserId, QString() ) );
     mAccessors->insert( QLatin1String( "status" ),
-                        new TaskAccessorPair( getStatus, setStatus, QString() ) );
+                        new TaskAccessorPair( getStatus, setStatus, i18nc( "@item:intable", "Status" ) ) );
     mAccessors->insert( QLatin1String( "date_due_flag" ),
                         new TaskAccessorPair( getDateDueFlag, setDateDueFlag, QString() ) );
     mAccessors->insert( QLatin1String( "date_due" ),
-                        new TaskAccessorPair( getDateDue, setDateDue, QString() ) );
+                        new TaskAccessorPair( getDateDue, setDateDue, i18nc( "@item:intable", "Due Date" ) ) );
     mAccessors->insert( QLatin1String( "date_start_flag" ),
                         new TaskAccessorPair( getDateStartFlag, setDateStartFlag, QString() ) );
     mAccessors->insert( QLatin1String( "date_start" ),
-                        new TaskAccessorPair( getDateStart, setDateStart, QString() ) );
+                        new TaskAccessorPair( getDateStart, setDateStart, i18nc( "@item:intable", "Start Date" ) ) );
     mAccessors->insert( QLatin1String( "parent_type" ),
                         new TaskAccessorPair( getParentType, setParentType, QString() ) );
     mAccessors->insert( QLatin1String( "parent_id" ),
@@ -297,7 +297,7 @@ TasksHandler::TasksHandler( SugarSession *session )
     mAccessors->insert( QLatin1String( "contact_id" ),
                         new TaskAccessorPair( getContactId, setContactId, QString() ) );
     mAccessors->insert( QLatin1String( "priority" ),
-                        new TaskAccessorPair( getPriority, setPriority, QString() ) );
+                        new TaskAccessorPair( getPriority, setPriority, i18nc( "@item:intable", "Priority" ) ) );
 }
 
 TasksHandler::~TasksHandler()
@@ -440,8 +440,6 @@ void TasksHandler::compare( Akonadi::AbstractDifferencesReporter *reporter,
         i18nc( "@title:column", "Serverside Task: modified by %1 on %2",
                modifiedBy, modifiedOn ) );
 
-    /*bool seenPrimaryAddress = false;
-    bool seenOtherAddress = false;
     AccessorHash::const_iterator it    = mAccessors->constBegin();
     AccessorHash::const_iterator endIt = mAccessors->constEnd();
     for ( ; it != endIt; ++it ) {
@@ -450,54 +448,14 @@ void TasksHandler::compare( Akonadi::AbstractDifferencesReporter *reporter,
             continue;
         }
 
-        QString leftValue = (*it)->getter( leftContact );
-        QString rightValue = (*it)->getter( rightContact );
+        QString leftValue = (*it)->getter( *leftTask );
+        QString rightValue = (*it)->getter( *rightTask );
 
         QString diffName = (*it)->diffName;
         if ( diffName.isEmpty() ) {
-            // check for special fields
-            if ( isAddressValue( it.key() ) ) {
-                if ( isPrimaryAddressValue( it.key() ) ) {
-                    if ( !seenPrimaryAddress ) {
-                        diffName = i18nc( "item:intable", "Primary Address" );
-                        seenPrimaryAddress = true;
-                        const KABC::Address leftAddress =
-                            leftContact.address( KABC::Address::Work | KABC::Address::Pref );
-                        const KABC::Address rightAddress =
-                            rightContact.address( KABC::Address::Work | KABC::Address::Pref );
-
-                        leftValue = leftAddress.formattedAddress();
-                        rightValue = rightAddress.formattedAddress();
-                    } else {
-                        // already printed, skip
-                        continue;
-                    }
-                } else {
-                    if ( !seenOtherAddress ) {
-                        seenOtherAddress = true;
-                        diffName = i18nc( "item:intable", "Other Address" );
-                        const KABC::Address leftAddress =
-                            leftContact.address( KABC::Address::Home );
-                        const KABC::Address rightAddress =
-                            rightContact.address( KABC::Address::Home );
-
-                        leftValue = leftAddress.formattedAddress();
-                        rightValue = rightAddress.formattedAddress();
-                    } else {
-                        // already printed, skip
-                        continue;
-                    }
-                }
-            } else if ( it.key() == "do_not_call" ) {
-                diffName = i18nc( "@item:intable", "Do Not Call" );
-                leftValue = getDoNotCall( leftContact ) == QLatin1String( "1" )
-                                ? QLatin1String( "Yes" ) : QLatin1String( "No" );
-                rightValue = getDoNotCall( rightContact ) == QLatin1String( "1" )
-                                ? QLatin1String( "Yes" ) : QLatin1String( "No" );
-            } else {
-                // internal field, skip
-                continue;
-            }
+            // TODO might need override for Status and Priority
+            // internal field, skip
+            continue;
         }
 
         if ( leftValue.isEmpty() && rightValue.isEmpty() ) {
@@ -514,5 +472,5 @@ void TasksHandler::compare( Akonadi::AbstractDifferencesReporter *reporter,
             reporter->addProperty( Akonadi::AbstractDifferencesReporter::ConflictMode,
                                    diffName, leftValue, rightValue );
         }
-    }*/
+    }
 }
