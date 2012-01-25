@@ -46,16 +46,6 @@ static void setId( const QString &value, KCalCore::Todo &todo )
     todo.setCustomProperty( "SugarCRM", "X-Id", value );
 }
 
-static QString getName( const KCalCore::Todo &todo )
-{
-    return todo.customProperty( "SugarCRM", "X-Name" );
-}
-
-static void setName( const QString &value, KCalCore::Todo &todo )
-{
-    todo.setCustomProperty( "SugarCRM", "X-Name", value );
-}
-
 static QString getDateEntered( const KCalCore::Todo &todo )
 {
     return todo.created().toString();
@@ -104,6 +94,16 @@ static QString getDescription( const KCalCore::Todo &todo )
 static void setDescription( const QString &value, KCalCore::Todo &todo )
 {
     todo.setDescription( value );
+}
+
+static QString getSummary( const KCalCore::Todo &todo )
+{
+    return todo.summary();
+}
+
+static void setSummary( const QString &value, KCalCore::Todo &todo )
+{
+    todo.setSummary( value );
 }
 
 static QString getDeleted( const KCalCore::Todo &todo )
@@ -265,7 +265,7 @@ TasksHandler::TasksHandler( SugarSession *session )
     mAccessors->insert( QLatin1String( "id" ),
                         new TaskAccessorPair( getId, setId, QString() ) );
     mAccessors->insert( QLatin1String( "name" ),
-                        new TaskAccessorPair( getName, setName, QString() ) );
+                        new TaskAccessorPair( getSummary, setSummary, QString() ) );
     mAccessors->insert( QLatin1String( "date_entered" ),
                         new TaskAccessorPair( getDateEntered, setDateEntered, QString() ) );
     mAccessors->insert( QLatin1String( "date_modififed" ),
