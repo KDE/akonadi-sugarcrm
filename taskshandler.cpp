@@ -26,7 +26,6 @@
 
 #include <akonadi/collection.h>
 #include <akonadi/abstractdifferencesreporter.h>
-#include <akonadi/kabc/contactparts.h>
 
 #include <kdatetime.h>
 
@@ -411,16 +410,6 @@ Akonadi::Item TasksHandler::itemFromEntry( const TNS__Entry_value &entry, const 
     item.setRemoteRevision( getDateModified( *todo ) );
 
     return item;
-}
-
-bool TasksHandler::needBackendChange( const Akonadi::Item &item, const QSet<QByteArray> &modifiedParts ) const
-{
-    if ( ModuleHandler::needBackendChange( item, modifiedParts ) ) {
-        return true;
-    }
-
-    return modifiedParts.contains( partIdFromPayloadPart( Akonadi::ContactPart::Lookup ) ) ||
-           modifiedParts.contains( partIdFromPayloadPart( Akonadi::ContactPart::Standard ) );
 }
 
 void TasksHandler::compare( Akonadi::AbstractDifferencesReporter *reporter,
