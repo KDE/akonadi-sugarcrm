@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=SugarCRM Contacts
+Name=SugarCRM Contacts and Tasks
 Name[bg]=Контакти от SugarCRM
 Name[de]=SugarCRM-Kontakte
 Name[es]=Contactos de SugarCRM
@@ -16,7 +16,7 @@ Name[pt_BR]=Contatos do SugarCRM
 Name[sv]=SugarCRM-kontakter
 Name[uk]=Записи контактів з SugarCRM
 Name[x-test]=xxSugarCRM Contactsxx
-Comment=Addressbook from SugarCRM Webservices
+Comment=Addressbooks and Tasklists from SugarCRM Webservices
 Comment[bg]=Адресник от уеб-услуга SugarCRM
 Comment[de]=Adressbuch der SugarCRM-Webdienste
 Comment[es]=Libreta de direcciones para los servicios web de SugarCRM
@@ -37,6 +37,6 @@ Type=AkonadiResource
 Exec=akonadi_sugarcrm_resource
 Icon=text-directory
 
-X-Akonadi-MimeTypes=inode/directory,text/directory
+X-Akonadi-MimeTypes=inode/directory,text/directory,application/x-vnd.akonadi.calendar.todo
 X-Akonadi-Capabilities=Resource
 X-Akonadi-Identifier=akonadi_sugarcrm_resource
