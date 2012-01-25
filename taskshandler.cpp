@@ -1,6 +1,7 @@
 /****************************************************************************
 ** Copyright (C) 2010, 2011 Klaralvdalens Datakonsult AB.  All rights reserved.
 ** Copyright (C) 2011-2012 Eric Newberry <ericnewberry@mirametrics.com>. All Rights Reserved.
+** Copyright (C) 2012, Kevin Krammer <kevin.krammer@gmx.at>
 **
 ** This file is part of the Akonadi Resource for SugarCRM.
 **
@@ -396,6 +397,16 @@ Akonadi::Item TasksHandler::itemFromEntry( const TNS__Entry_value &entry, const 
     KCalCore::Todo::Ptr todo( new KCalCore::Todo );
     todo->setUid( entry.id() );
 
+    Q_FOREACH( const TNS__Name_value &namedValue, valueList ) {
+        const AccessorHash::const_iterator accessIt = mAccessors->constFind( namedValue.name() );
+        if ( accessIt == mAccessors->constEnd() ) {
+            // no accessor for field
+            continue;
+        }
+
+        (*accessIt)->setter.vSetter( namedValue.value(), *todo );
+    }    
+    
     item.setPayload<KCalCore::Todo::Ptr>( todo );
     item.setRemoteRevision( getDateModified( *todo ) );
 
