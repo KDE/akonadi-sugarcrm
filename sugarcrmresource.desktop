@@ -1,6 +1,14 @@
 [Desktop Entry]
 Name=SugarCRM Contacts and Tasks
+Name[pt]=Contactos e Tarefas do SugarCRM
+Name[pt_BR]=Contatos e tarefas do SugarCRM
+Name[uk]=Записи контактів та завдань з SugarCRM
+Name[x-test]=xxSugarCRM Contacts and Tasksxx
 Comment=Addressbooks and Tasklists from SugarCRM Webservices
+Comment[pt]=Livro de endereços e listas de tarefas dos serviços Web do SugarCRM
+Comment[pt_BR]=Livros de endereços e listas de tarefas do serviço Web do SugarCRM
+Comment[uk]=Адресні книги та списки завдань з вебслужб SugarCRM
+Comment[x-test]=xxAddressbooks and Tasklists from SugarCRM Webservicesxx
 Type=AkonadiResource
 Exec=akonadi_sugarcrm_resource
 Icon=text-directory
