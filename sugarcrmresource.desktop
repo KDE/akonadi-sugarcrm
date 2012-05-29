@@ -2,6 +2,7 @@
 Name=SugarCRM Contacts and Tasks
 Name[de]=SugarCRM-Kontakte und -Aufgaben
 Name[es]=Contactos y tareas de SugarCRM
+Name[et]=SugarCRM kontaktid ja ülesanded
 Name[it]=Contatti e attività SugarCRM
 Name[nl]=Contacten en taken van SugarCRM
 Name[pl]=Kontakty i zadania SugarCRM
@@ -13,6 +14,7 @@ Name[x-test]=xxSugarCRM Contacts and Tasksxx
 Comment=Addressbooks and Tasklists from SugarCRM Webservices
 Comment[de]=Adressbücher und Aufgabenlisten vom SugarCRM-Webdienst
 Comment[es]=Libreta de direcciones y lista de tareas para los servicios web de SugarCRM
+Comment[et]=SugarCRM veebiteenuste aadressiraamatud ja ülesandeloendid
 Comment[it]=Rubriche ed elenchi delle attività dai servizi web SugarCRM
 Comment[nl]=Adresboeken takenlijsten van SugarCRM webservices
 Comment[pl]=Książki adresowe z listy zadań z usług sieciowych SugarCRM
