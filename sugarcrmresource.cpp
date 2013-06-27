@@ -49,6 +49,7 @@
 #include <QtDBus/QDBusConnection>
 
 using namespace Akonadi;
+using namespace Sugar;
 
 static QString nameFromHostString( const QString &host )
 {

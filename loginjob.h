@@ -20,6 +20,8 @@
 
 #include "sugarjob.h"
 
+namespace Sugar {
+
 class LoginJob : public SugarJob
 {
     Q_OBJECT
@@ -32,5 +34,7 @@ public:
 protected:
     void startSugarTask();
 };
+
+}
 
 #endif

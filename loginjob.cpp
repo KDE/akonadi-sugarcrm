@@ -19,6 +19,8 @@
 
 #include <KDebug>
 
+using namespace Sugar;
+
 LoginJob::LoginJob( SugarSession *session, QObject *parent )
     : SugarJob( session, parent )
 {

@@ -69,6 +69,7 @@ include_directories(
     ${KDE4_INCLUDES}
     ${KDEPIMLIBS_INCLUDE_DIRS}
     ${KDSoap_INCLUDE_DIR}
+    ${KDSoap_INCLUDE_DIR}/KDSoapClient
 )
 
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS}" )
