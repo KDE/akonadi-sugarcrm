@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=SugarCRM Contacts and Tasks
+Name[da]=SugarCRM-kontakter og -opgaver
 Name[de]=SugarCRM-Kontakte und -Aufgaben
 Name[es]=Contactos y tareas de SugarCRM
 Name[et]=SugarCRM kontaktid ja ülesanded
@@ -21,6 +22,7 @@ Name[tr]=SugarCRM Kişiler ve Görevler
 Name[uk]=Записи контактів та завдань з SugarCRM
 Name[x-test]=xxSugarCRM Contacts and Tasksxx
 Comment=Addressbooks and Tasklists from SugarCRM Webservices
+Comment[da]=Adressebøger og opgavelister fra SugarCRM-webtjenester
 Comment[de]=Adressbücher und Aufgabenlisten vom SugarCRM-Webdienst
 Comment[es]=Libreta de direcciones y lista de tareas para los servicios web de SugarCRM
 Comment[et]=SugarCRM veebiteenuste aadressiraamatud ja ülesandeloendid
